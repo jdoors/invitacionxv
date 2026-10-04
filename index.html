@@ -102,6 +102,17 @@ html{-webkit-text-size-adjust:100%}
   select,input,textarea{font-size:16px}
 }
 
+
+/* POPUP MAPA */
+.mapa-modal{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.7)}
+.mapa-modal.abierto{display:flex}
+.mapa-caja{position:relative;width:100%;max-width:420px;height:min(70vh,420px);border-radius:12px;overflow:hidden;background:#222;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.mapa-caja iframe{width:100%;height:100%;border:0;display:block}
+.mapa-ir{position:absolute;inset:0;z-index:1;display:block}
+.mapa-chip{position:absolute;top:10px;left:10px;z-index:2;padding:8px 12px;border-radius:4px;background:#1f1f1f;color:#fff;font:600 .75rem Montserrat,sans-serif;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.mapa-cerrar{position:absolute;top:-14px;right:-6px;z-index:3;width:34px;height:34px;border:0;border-radius:50%;background:#fff;color:#000;font-size:1.3rem;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.mapa-caja-wrap{position:relative;width:100%;max-width:420px}
+.mapa-caja-wrap .mapa-caja{max-width:none}
 </style>
 </head>
 <body>
@@ -158,11 +169,7 @@ html{-webkit-text-size-adjust:100%}
       </svg>
       <h3>¿DÓNDE?</h3>
       <p>Jano's Benavidez 2</p>
-      <!-- Reemplazá el # por el link de Google Maps -->
-           <!-- Link de Google Maps -->
-            <!-- Link de Google Maps -->
-            <!-- Link de Google Maps -->
-      <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Jano's+Benavidez+2,+Chilavert+601,+B1621+Benavidez,+Provincia+de+Buenos+Aires" target="_blank" rel="noopener">CÓMO LLEGAR</a>
+      <button class="btn" id="comoLlegar" type="button">CÓMO LLEGAR</button>
     </div>
   </section>
 
@@ -261,6 +268,20 @@ html{-webkit-text-size-adjust:100%}
 
 </main>
 
+
+<!-- POPUP MAPA -->
+<div class="mapa-modal" id="mapaModal" role="dialog" aria-modal="true" aria-label="Mapa del salón">
+  <div class="mapa-caja-wrap">
+    <button class="mapa-cerrar" id="mapaCerrar" type="button" aria-label="Cerrar">×</button>
+    <div class="mapa-caja">
+      <iframe src="https://www.google.com/maps?q=Jano%27s+Benavidez+2%2C+Chilavert+601%2C+B1621+Benavidez%2C+Provincia+de+Buenos+Aires&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa"></iframe>
+      <!-- Capa transparente: al tocar el mapa redirige a Google Maps -->
+      <a class="mapa-ir" href="https://www.google.com/maps/dir/?api=1&destination=Jano%27s+Benavidez+2%2C+Chilavert+601%2C+B1621+Benavidez%2C+Provincia+de+Buenos+Aires" target="_blank" rel="noopener" aria-label="Abrir en Google Maps"></a>
+      <a class="mapa-chip" href="https://www.google.com/maps/dir/?api=1&destination=Jano%27s+Benavidez+2%2C+Chilavert+601%2C+B1621+Benavidez%2C+Provincia+de+Buenos+Aires" target="_blank" rel="noopener">Abrir en Maps ↗</a>
+    </div>
+  </div>
+</div>
+
 <!-- Poné tu canción como musica.mp3 en la misma carpeta -->
 <audio id="audio" src="musica.mp3" loop></audio>
 <button id="musica" type="button" aria-label="Reproducir música">▶</button>
@@ -284,6 +305,13 @@ bm.onclick = () => {
   if (audio.paused){ audio.play().catch(()=>{}); bm.textContent='❚❚'; }
   else { audio.pause(); bm.textContent='▶'; }
 };
+
+// Popup del mapa
+const mm = $('mapaModal');
+$('comoLlegar').onclick = () => mm.classList.add('abierto');
+$('mapaCerrar').onclick = () => mm.classList.remove('abierto');
+mm.addEventListener('click', e => { if(e.target === mm) mm.classList.remove('abierto'); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') mm.classList.remove('abierto'); });
 
 // Mostrar/ocultar cuenta
 $('verCuenta').onclick = () => $('cuenta').classList.toggle('abierto');
