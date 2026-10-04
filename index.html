@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mis XV Martina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#1b4568;--noche:#071a52;--cielo:#3f6fd1;--blanco:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Montserrat,sans-serif;color:var(--azul);background:#fff;display:flex;justify-content:center}
+.tarjeta{width:100%;max-width:480px;overflow:hidden;background:#fff}
+section{padding:64px 28px;text-align:center;position:relative}
+.oscuro{color:#fff;background:radial-gradient(circle at 70% 20%,#1d3f9c 0,var(--noche) 70%)}
+h1,h2,h3{font-weight:300;letter-spacing:.04em}
+.script{font-family:'Great Vibes',cursive;font-weight:400;letter-spacing:0}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;overflow:hidden}
+.hero h1{font-size:2.6rem}
+.hero h1 b{font-weight:800}
+.hero .nombre{font-size:6.2rem;line-height:1;margin-bottom:28px}
+.cuenta{display:flex;gap:6px;justify-content:center}
+.cuenta div{min-width:70px}
+.cuenta strong{display:block;font-size:2.2rem;font-weight:400}
+.cuenta span{font-size:.62rem;letter-spacing:.12em}
+.mariposa{position:absolute;width:70px;opacity:.55;animation:vuelo 7s ease-in-out infinite alternate}
+.m1{top:6%;left:58%}.m2{top:22%;left:-10px;width:110px;animation-delay:-2s}
+.m3{bottom:12%;right:-8px;width:90px;animation-delay:-4s}
+@keyframes vuelo{to{transform:translateY(-14px) rotate(6deg)}}
+/* DETALLES */
+.dato{margin:0 auto 40px}
+.dato h3{font-size:1.1rem;font-weight:600;margin-bottom:10px}
+.dato p{font-size:1.05rem;line-height:1.6}
+.btn{display:inline-block;margin-top:16px;padding:12px 28px;border:1.5px solid currentColor;border-radius:30px;background:transparent;color:inherit;font:600 .8rem Montserrat,sans-serif;letter-spacing:.1em;text-decoration:none;cursor:pointer}
+.btn.lleno{background:#fff;color:var(--azul);border-color:#fff}
+.frase{font-size:2.4rem;line-height:1.25;padding:80px 32px}
+.frase-sub{font-size:1.4rem;font-weight:300}
+.oculto{display:none;margin-top:20px;line-height:1.9}
+.oculto.abierto{display:block}
+/* RSVP */
+select,input{width:100%;max-width:280px;padding:13px;margin-top:14px;border:1.5px solid #fff;border-radius:10px;background:transparent;color:#fff;font:400 .9rem Montserrat,sans-serif}
+option{color:#000}
+input::placeholder{color:#cdd8f5}
+.etq{display:block;margin-top:22px;font-size:.78rem;font-weight:600;letter-spacing:.06em}
+.invitado{max-width:300px;margin:18px auto 0;padding:6px 20px 22px;text-align:left;border-left:6px solid rgba(255,255,255,.3);border-radius:0;background:rgba(255,255,255,.16)}
+.invitado h4{margin-top:14px;font-size:.8rem;letter-spacing:.06em}
+.invitado .etq{margin-top:20px;font-size:.74rem}
+.invitado input,.invitado select{max-width:none;margin-top:4px;padding:10px 0;border:0;border-bottom:1.5px solid #fff;border-radius:0}
+.asis{display:flex;flex-direction:column;gap:6px;margin-top:22px}
+.asis .btn{margin:0;padding:10px;font-size:.78rem;text-align:center}
+.asis .btn.sel{background:#fff;color:var(--azul);border-color:#fff}
+#confirmar{margin-top:26px}
+.btn[disabled]{opacity:.6;cursor:default}
+/* MUSICA */
+#musica{position:fixed;right:16px;bottom:16px;z-index:5;width:54px;height:54px;border:0;border-radius:50%;background:var(--azul);color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+/* TE ESPERO */
+.cierre{padding:30px 0}
+.banner{position:relative;overflow:hidden;min-height:190px;display:flex;align-items:center;justify-content:center}
+.banner h2{position:relative;font-size:2.6rem;font-weight:300;letter-spacing:.05em}
+/* ICONOS ANIMADOS */
+.icono{display:block;width:68px;height:68px;margin:0 auto 14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.diamante{animation:flota 3s ease-in-out infinite}
+@keyframes flota{50%{transform:translateY(-6px)}}
+.brillo{transform-box:fill-box;transform-origin:center;animation:brilla 2.2s ease-in-out infinite}
+@keyframes brilla{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1)}}
+.tapa{transform-box:fill-box;transform-origin:left bottom;animation:abre 2.8s ease-in-out infinite}
+@keyframes abre{0%,55%,100%{transform:none}70%{transform:translateY(-7px) rotate(-7deg)}}
+.calendario{transform-box:fill-box;transform-origin:center bottom;animation:balanceo 3s ease-in-out infinite}
+@keyframes balanceo{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.tilde{stroke-dasharray:30;stroke-dashoffset:30;animation:dibuja 3s ease-in-out infinite}
+@keyframes dibuja{0%,20%{stroke-dashoffset:30}50%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:30}}
+.pin{animation:rebota 2s ease-in-out infinite}
+@keyframes rebota{0%,100%{transform:translateY(0)}40%{transform:translateY(-8px)}}
+.sombra{transform-box:fill-box;transform-origin:center;animation:sombra 2s ease-in-out infinite}
+@keyframes sombra{0%,100%{transform:scale(1);opacity:1}40%{transform:scale(.6);opacity:.4}}
+@media (prefers-reduced-motion:reduce){.icono,.icono *{animation:none!important}.tilde{stroke-dashoffset:0}.mariposa{animation:none}html{scroll-behavior:auto}}
+
+.hero{
+  background:
+    linear-gradient(rgba(7,26,82,.35), rgba(7,26,82,.35)),
+    url('portada.jpeg') center/cover no-repeat;
+}
+.banner{
+  background:
+    linear-gradient(rgba(7,26,82,.35), rgba(7,26,82,.35)),
+    url('portada.jpeg') center/cover no-repeat;
+}
+
+/* AJUSTES PARA CELULAR */
+html{-webkit-text-size-adjust:100%}
+.hero{min-height:100vh;min-height:100svh}
+.hero h1{font-size:clamp(2rem,10vw,2.6rem)}
+.hero .nombre{font-size:clamp(3.6rem,19vw,6.2rem)}
+.cuenta{gap:2px}
+.cuenta div{min-width:clamp(56px,17vw,70px)}
+.cuenta strong{font-size:clamp(1.6rem,8vw,2.2rem)}
+@media (max-width:480px){
+  section{padding-left:20px;padding-right:20px}
+  select,input,textarea{font-size:16px}
+}
+
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="mariposa" viewBox="0 0 100 80">
+    <path d="M50 40C40 8 8 0 4 22c-3 20 22 28 46 18zM50 40C60 8 92 0 96 22c3 20-22 28-46 18zM50 42C38 50 18 58 26 72c10 10 22-14 24-30zM50 42c12 8 32 16 24 30-10 10-22-14-24-30z" fill="#6f9bff"/>
+  </symbol>
+</svg>
+
+<main class="tarjeta">
+
+  <!-- BIENVENIDA -->
+  <section class="oscuro hero">
+    <svg class="mariposa m1"><use href="#mariposa"/></svg>
+    <svg class="mariposa m2"><use href="#mariposa"/></svg>
+    <svg class="mariposa m3"><use href="#mariposa"/></svg>
+    <h1>MIS <b>XV</b></h1>
+    <h2 class="script nombre">Martina</h2>
+    <div class="cuenta">
+      <div><strong id="d">–</strong><span>DÍAS</span></div>
+      <div><strong id="h">–</strong><span>HORAS</span></div>
+      <div><strong id="m">–</strong><span>MINUTOS</span></div>
+      <div><strong id="s">–</strong><span>SEGUNDOS</span></div>
+    </div>
+  </section>
+
+  <!-- CUÁNDO -->
+  <section class="oscuro">
+    <div class="dato">
+      <svg class="icono" viewBox="0 0 64 64" aria-hidden="true">
+        <g class="calendario">
+          <rect x="10" y="14" width="44" height="42" rx="4"/>
+          <path d="M10 26h44M22 8v10M42 8v10"/>
+          <path class="tilde" d="M23 42l6 6 12-13"/>
+        </g>
+        <path class="brillo" d="M56 6v10M51 11h10"/>
+        <path class="brillo" style="animation-delay:-1.1s" d="M6 8v8M2 12h8"/>
+      </svg>
+      <h3>¿CUÁNDO?</h3>
+      <p>27 de Noviembre 2026<br>21:00 HS</p>
+    </div>
+  </section>
+
+  <!-- DÓNDE -->
+  <section>
+    <div class="dato">
+      <svg class="icono" viewBox="0 0 64 64" aria-hidden="true">
+        <g class="pin">
+          <path d="M32 54C21 40 14 33 14 24a18 18 0 0 1 36 0c0 9-7 16-18 30z"/>
+          <circle cx="32" cy="24" r="7"/>
+        </g>
+        <ellipse class="sombra" cx="32" cy="60" rx="9" ry="2"/>
+      </svg>
+      <h3>¿DÓNDE?</h3>
+      <p>Jano's Benavidez 2</p>
+      <!-- Reemplazá el # por el link de Google Maps -->
+           <!-- Link de Google Maps -->
+            <!-- Link de Google Maps -->
+            <!-- Link de Google Maps -->
+      <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Jano's+Benavidez+2,+Chilavert+601,+B1621+Benavidez,+Provincia+de+Buenos+Aires" target="_blank" rel="noopener">CÓMO LLEGAR</a>
+    </div>
+  </section>
+
+  <section class="oscuro frase">
+    <p class="script">La felicidad solo es real cuando se comparte</p>
+  </section>
+
+  <!-- DRESS CODE -->
+  <section>
+    <div class="dato">
+      <svg class="icono" viewBox="0 0 64 64" aria-hidden="true">
+        <g class="diamante">
+          <path d="M10 22h44M20 8h24l10 14-22 34L10 22zM26 22l6 34 6-34M26 22l-6-14M38 22l6-14M26 22l6-14 6 14"/>
+        </g>
+        <path class="brillo" d="M54 6v10M49 11h10"/>
+        <path class="brillo" style="animation-delay:-1s" d="M8 40v8M4 44h8"/>
+      </svg>
+      <h3>DRESS CODE</h3>
+      <p><strong>ELEGANTE</strong><br>Evitar el uso del color<b> azul</b></p>
+    </div>
+
+  </section>
+
+  <!-- REGALOS -->
+  <section class="oscuro">
+    <div class="dato">
+      <svg class="icono" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="12" y="30" width="40" height="26" rx="2"/>
+        <path d="M32 30v26"/>
+        <g class="tapa">
+          <rect x="8" y="22" width="48" height="8" rx="2"/>
+          <path d="M32 22c-8-14-20-4-10 0M32 22c8-14 20-4 10 0"/>
+        </g>
+        <path class="brillo" d="M56 6v10M51 11h10"/>
+        <path class="brillo" style="animation-delay:-1.1s" d="M6 10v8M2 14h8"/>
+      </svg>
+      <h3>REGALOS</h3>
+      <p>Nada es más importante que tu presencia, pero si deseas hacerme un presente habrá una urna en el salón o puedes hacerlo en la siguiente cuenta.</p>
+      <button class="btn" id="verCuenta" type="button">VER CUENTA</button>
+      <p class="oculto" id="cuenta">
+        <b>ALIAS:</b> XXXXXXXXX<br>
+        <b>CBU:</b> XXXXXXXXXXXX
+      </p>
+    </div>
+
+  </section>
+
+  <!-- FOTOS -->
+  <section>
+    <div class="dato">
+      <svg class="icono" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M22 20l3-6h14l3 6M8 20h48a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V22a2 2 0 0 1 2-2z"/>
+        <circle cx="32" cy="36" r="10"/>
+        <circle cx="32" cy="36" r="4"/>
+        <path class="brillo" d="M50 26h4M52 24v4"/>
+        <path class="brillo" style="animation-delay:-1s" d="M46 4v8M42 8h8"/>
+      </svg>
+      <h3>SUMA TUS FOTOS</h3>
+      <p>Pueden subir todas sus fotos del evento a mi álbum compartido.</p>
+      <!-- Reemplazá el # por el link de tu álbum -->
+      <a class="btn" href="#" target="_blank" rel="noopener">IR AL ÁLBUM</a>
+    </div>
+  </section>
+
+  <section class="oscuro frase">
+    <p class="frase-sub">¡TE INVITO A CELEBRAR UNA NOCHE<b> INOLVIDABLE</b>!</p>
+  </section>
+
+  <!-- CONFIRMAR ASISTENCIA (se guarda en Google Sheets) -->
+  <section class="oscuro">
+    <div class="dato">
+      <h3>CONFIRMÁ TU ASISTENCIA</h3>
+      <p>Antes del 20 de octubre 2026</p>
+      <label class="etq" for="personas">NÚMERO DE PERSONAS A CONFIRMAR</label>
+      <select id="personas">
+        <option value="1">1 persona</option><option value="2">2 personas</option>
+        <option value="3">3 personas</option><option value="4">4 personas</option>
+        <option value="5">5 personas</option><option value="6">6 personas</option>
+        <option value="7">7 personas</option><option value="8">8 personas</option>
+        <option value="9">9 personas</option><option value="10">10 personas</option>
+      </select>
+      <div id="invitados"></div>
+      <button class="btn lleno" id="confirmar" type="button">CONFIRMAR</button>
+      <p class="oculto" id="gracias" role="status"></p>
+    </div>
+  </section>
+
+  <!-- TE ESPERO -->
+  <section class="cierre">
+    <div class="banner oscuro">
+      <svg class="mariposa" style="top:8%;left:4%;width:120px"><use href="#mariposa"/></svg>
+      <svg class="mariposa" style="bottom:6%;right:6%;width:70px;animation-delay:-3s"><use href="#mariposa"/></svg>
+      <h2>TE ESPERO</h2>
+    </div>
+  </section>
+
+</main>
+
+<!-- Poné tu canción como musica.mp3 en la misma carpeta -->
+<audio id="audio" src="musica.mp3" loop></audio>
+<button id="musica" type="button" aria-label="Reproducir música">▶</button>
+
+<script>
+// Cuenta regresiva (27/11/2026 21:00, hora Argentina UTC-3)
+const fecha = new Date('2026-11-27T21:00:00-03:00');
+const $ = id => document.getElementById(id);
+function tick(){
+  let t = Math.max(0, fecha - new Date());
+  $('d').textContent = Math.floor(t/864e5);
+  $('h').textContent = Math.floor(t/36e5)%24;
+  $('m').textContent = Math.floor(t/6e4)%60;
+  $('s').textContent = Math.floor(t/1e3)%60;
+}
+tick(); setInterval(tick,1000);
+
+// Música
+const audio = $('audio'), bm = $('musica');
+bm.onclick = () => {
+  if (audio.paused){ audio.play().catch(()=>{}); bm.textContent='❚❚'; }
+  else { audio.pause(); bm.textContent='▶'; }
+};
+
+// Mostrar/ocultar cuenta
+$('verCuenta').onclick = () => $('cuenta').classList.toggle('abierto');
+
+// Confirmar asistencia: se guarda en tu planilla de Google Sheets
+// Pegá acá la URL de la aplicación web (termina en /exec)
+const URL_PLANILLA = 'https://script.google.com/macros/s/AKfycbzZ8O1r45s_fW9aPj8nkz-76Te5Y83Ms8D08zVF25igKR1qFoXZlRFdXU2EgMaq5F0W/exec';
+// Una tarjeta por invitado
+const COMIDAS = ['Ninguno','Vegetariano','Celíaco (sin TACC)'];
+function dibujarInvitados(){
+  const n = +$('personas').value;
+  let h = '';
+  for(let i = 1; i <= n; i++){
+    h += `<div class="invitado"><h4>INVITADO ${i}</h4>
+      <label class="etq">NOMBRE *</label><input class="inom" type="text">
+      <label class="etq">APELLIDO *</label><input class="iape" type="text">
+      <div class="asis">
+        <button type="button" class="btn sel" data-v="Sí">¡CONFIRMO!</button>
+        <button type="button" class="btn" data-v="No">NO PODRÉ ASISTIR</button>
+      </div>
+      <div class="extra">
+        <label class="etq">¿ALGÚN REQUERIMIENTO EN LA ALIMENTACIÓN? *</label>
+        <select class="ialim">${COMIDAS.map(c => `<option>${c}</option>`).join('')}</select>
+        <label class="etq">SUGERÍ TU CANCIÓN</label><input class="icanc" type="text">
+      </div>
+      <label class="etq">COMENTÁ TUS BUENOS DESEOS</label><input class="imsj" type="text">
+    </div>`;
+  }
+  $('invitados').innerHTML = h;
+}
+$('personas').onchange = dibujarInvitados;
+$('invitados').addEventListener('click', e => {
+  const b = e.target.closest('.asis .btn');
+  if(!b) return;
+  b.parentNode.querySelectorAll('.btn').forEach(x => x.classList.toggle('sel', x === b));
+  b.closest('.invitado').querySelector('.extra').style.display = b.dataset.v === 'No' ? 'none' : '';
+});
+dibujarInvitados();
+
+$('confirmar').onclick = async () => {
+  const g = $('gracias'), btn = $('confirmar');
+  const lista = [];
+  g.classList.remove('abierto');
+  const aviso = txt => { g.textContent = txt; g.classList.add('abierto'); };
+  for(const t of document.querySelectorAll('.invitado')){
+    const nom = t.querySelector('.inom'), ape = t.querySelector('.iape');
+    if(!nom.value.trim()){ aviso('Completá el nombre de cada invitado.'); nom.focus(); return; }
+    if(!ape.value.trim()){ aviso('Completá el apellido de cada invitado.'); ape.focus(); return; }
+    const si = t.querySelector('.asis .sel').dataset.v === 'Sí';
+    lista.push({
+      nombre: nom.value.trim(), apellido: ape.value.trim(),
+      asiste: si ? 'Sí' : 'No',
+      alimentacion: si ? t.querySelector('.ialim').value : '',
+      cancion: si ? t.querySelector('.icanc').value.trim() : '',
+      mensaje: t.querySelector('.imsj').value.trim()
+    });
+  }
+  btn.disabled = true; btn.textContent = 'ENVIANDO...';
+  try{
+    await fetch(URL_PLANILLA, {
+      method:'POST', mode:'no-cors',
+      body: new URLSearchParams({invitados: JSON.stringify(lista)})
+    });
+    const viene = lista.some(i => i.asiste === 'Sí');
+    g.textContent = viene
+      ? '¡Gracias, ' + lista[0].nombre + '! Tu respuesta quedó registrada.'
+      : 'Gracias por avisar, ' + lista[0].nombre + '. ¡Te vamos a extrañar!';
+    btn.textContent = 'ENVIADO';
+  }catch(e){
+    g.textContent = 'No se pudo enviar. Revisá tu conexión e intentá de nuevo.';
+    btn.disabled = false; btn.textContent = 'CONFIRMAR';
+  }
+  g.classList.add('abierto');
+};
+</script>
+</body>
+</html>
