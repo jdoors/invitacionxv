@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+
 <style>
 :root{--azul:#1b4568;--noche:#071a52;--cielo:#3f6fd1;--blanco:#fff}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -113,9 +114,19 @@ html{-webkit-text-size-adjust:100%}
 .mapa-cerrar{position:absolute;top:-14px;right:-6px;z-index:3;width:34px;height:34px;border:0;border-radius:50%;background:#fff;color:#000;font-size:1.3rem;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.4)}
 .mapa-caja-wrap{position:relative;width:100%;max-width:420px}
 .mapa-caja-wrap .mapa-caja{max-width:none}
+
+  /* PORTADA / INGRESAR */
+#portada h1{font-size:clamp(1.9rem,9vw,2.5rem);font-weight:400;letter-spacing:.03em;margin-bottom:14px}
+#portada p{max-width:300px;font-size:clamp(1rem,4.6vw,1.2rem);line-height:1.6;letter-spacing:.02em;text-transform:uppercase}
+#ingresar{margin-top:22px;padding:14px 36px;border:0;border-radius:0;background:#fff;color:var(--azul);font:400 1.3rem Arial,Helvetica,sans-serif;letter-spacing:.02em;cursor:pointer}
+#ingresar:active{transform:scale(.96)}
+body.bloqueado .tarjeta > section:not(#portada){display:none}
+body:not(.bloqueado) #portada{display:none}
+
 </style>
 </head>
-<body>
+
+<body class="bloqueado">
 
 <svg width="0" height="0" style="position:absolute">
   <symbol id="mariposa" viewBox="0 0 100 80">
@@ -124,6 +135,16 @@ html{-webkit-text-size-adjust:100%}
 </svg>
 
 <main class="tarjeta">
+
+    <!-- PORTADA -->
+  <section id="portada" class="oscuro hero">
+    <svg class="mariposa m1"><use href="#mariposa"/></svg>
+    <svg class="mariposa m2"><use href="#mariposa"/></svg>
+    <svg class="mariposa m3"><use href="#mariposa"/></svg>
+    <h1>MIS XV MARTINA</h1>
+    <p>Te invito a ser parte de un día muy importante</p>
+    <button id="ingresar" type="button">INGRESAR</button>
+  </section>
 
   <!-- BIENVENIDA -->
   <section class="oscuro hero">
@@ -301,6 +322,12 @@ tick(); setInterval(tick,1000);
 
 // Música
 const audio = $('audio'), bm = $('musica');
+// Portada: INGRESAR muestra la invitación y activa la música
+$('ingresar').onclick = () => {
+  audio.play().then(() => { bm.textContent = '❚❚'; }).catch(() => {});
+  document.body.classList.remove('bloqueado');
+  window.scrollTo(0, 0);
+};
 bm.onclick = () => {
   if (audio.paused){ audio.play().catch(()=>{}); bm.textContent='❚❚'; }
   else { audio.pause(); bm.textContent='▶'; }
