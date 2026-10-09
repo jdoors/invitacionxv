@@ -115,7 +115,8 @@ html{-webkit-text-size-adjust:100%}
 .mapa-caja-wrap{position:relative;width:100%;max-width:420px}
 .mapa-caja-wrap .mapa-caja{max-width:none}
 
-  /* PORTADA / INGRESAR */
+/* PORTADA / INGRESAR */
+#portada{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px}
 #portada h1{font-size:clamp(1.9rem,9vw,2.5rem);font-weight:400;letter-spacing:.03em;margin-bottom:14px}
 #portada p{max-width:300px;font-size:clamp(1rem,4.6vw,1.2rem);line-height:1.6;letter-spacing:.02em;text-transform:uppercase}
 #ingresar{margin-top:22px;padding:14px 36px;border:0;border-radius:0;background:#fff;color:var(--azul);font:400 1.3rem Arial,Helvetica,sans-serif;letter-spacing:.02em;cursor:pointer}
@@ -136,11 +137,8 @@ body:not(.bloqueado) #portada{display:none}
 
 <main class="tarjeta">
 
-    <!-- PORTADA -->
-  <section id="portada" class="oscuro hero">
-    <svg class="mariposa m1"><use href="#mariposa"/></svg>
-    <svg class="mariposa m2"><use href="#mariposa"/></svg>
-    <svg class="mariposa m3"><use href="#mariposa"/></svg>
+     <!-- PORTADA -->
+  <section id="portada" class="oscuro">
     <!-- h1>MIS XV MARTINA</h1-->
     <p>Te invito a ser parte de un día muy importante</p>
     <button id="ingresar" type="button">INGRESAR</button>
